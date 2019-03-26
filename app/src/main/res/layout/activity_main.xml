@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                tools:context="com.example.bluetools.DeviceBluetoothDetailFragment">
+
+                <!-- TODO: Update blank fragment layout -->
+
+                <TextView
+                    android:id="@+id/nameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Name:"
+                    android:padding="3dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/nameLabel"
+                    android:layout_alignParentTop="true"
+                    android:text="Name:"
+                    android:padding="3dp"
+
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/enabledLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameLabel"
+                    android:layout_alignParentLeft="true"
+                    android:text="Enabled:"
+                    android:padding="3dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/enabledTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameTextView"
+                    android:layout_toRightOf="@id/enabledLabel"
+                    android:padding="3dp"
+                    android:text="Enabled:"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/stateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/enabledLabel"
+                    android:layout_alignParentLeft="true"
+                    android:padding="3dp"
+                    android:text="State:"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/stateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/enabledTextView"
+                    android:layout_toRightOf="@id/stateLabel"
+                    android:text="State:"
+                    android:padding="3dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/addressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stateLabel"
+                    android:layout_alignParentLeft="true"
+                    android:text="Address:"
+                    android:padding="3dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/addressTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stateTextView"
+                    android:layout_toRightOf="@id/addressLabel"
+                    android:text="Address:"
+                    android:padding="3dp"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/enabledImageView"
+                    android:layout_width="77dp"
+                    android:layout_height="72dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/enabled"
+                    android:tint="#A6CEEE"
+                    tools:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/disabledImageView"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_alignParentRight="true"
+                    android:tint="@color/colorAccent"
+                    android:src="@drawable/bluetooth_disabled_black_704x704"
+                    tools:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/enableBluetoothButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/stateTextView"
+                    android:layout_alignParentRight="true"
+
+                    android:text="Button" />
+
+
+            </RelativeLayout>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <include
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav_view"
+        android:layout_below="@id/app_bar" />
+
+
+<android.support.design.widget.BottomNavigationView
+android:id="@+id/nav_view"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:layout_marginStart="0dp"
+android:layout_marginEnd="0dp"
+android:background="#A6CEEE"
+app:menu="@menu/bottom_nav_menu" />
+
+
+    </RelativeLayout>

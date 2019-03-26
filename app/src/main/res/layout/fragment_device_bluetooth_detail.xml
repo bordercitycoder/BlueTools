@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    tools:context="com.example.bluetools.DeviceBluetoothDetailFragment">
+
+
+    <TextView
+        android:id="@+id/scanModeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Scan Mode:"
+        android:padding="3dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/scanModeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/scanModeLabel"
+        android:layout_alignParentTop="true"
+        android:text="None"
+        android:padding="3dp"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/addressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scanModeLabel"
+        android:layout_alignParentStart="true"
+        android:text="Address:"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/addressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scanModeTextView"
+        android:layout_toEndOf="@id/addressLabel"
+        android:text="Address:"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:textSize="18sp" />
+
+
+
+</RelativeLayout>
