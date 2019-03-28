@@ -14,5 +14,7 @@ Treating the Bluetooth Adapter like a model.  This gives me the most up to date 
 
 Currently in the process of adding tests for what is there now. 
 
+ToDo: Add warning notification that "Bluetooth has been enabled for x number of minutes with no pairing.  Would you like to disable Bluetooth until you need it?"
+
 
 [![BlueTools](https://github.com/bordercitycoder/BlueTools/blob/master/app/images/bluetools1_resized.gif?branch=master)](https://github.com/bordercitycoder/BlueTools/blob/master/app/images/bluetools1_resized.gif)
