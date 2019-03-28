@@ -29,9 +29,6 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-
-
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
@@ -39,27 +36,26 @@
                 android:layout_centerInParent="true"
                 tools:context="com.example.bluetools.ui.DeviceBluetoothDetailFragment">
 
-                <!-- TODO: Update blank fragment layout -->
-
                 <TextView
                     android:id="@+id/nameLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:text="Name:"
                     android:padding="3dp"
+                    android:layout_marginTop="10dp"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/nameLabel"
+                    android:layout_toEndOf="@id/nameLabel"
                     android:layout_alignParentTop="true"
                     android:text="Name:"
+                    android:layout_marginTop="10dp"
                     android:padding="3dp"
-
                     android:textSize="18sp" />
 
                 <TextView
@@ -100,26 +96,6 @@
                     android:layout_below="@id/enabledTextView"
                     android:layout_toRightOf="@id/stateLabel"
                     android:text="State:"
-                    android:padding="3dp"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/addressLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/stateLabel"
-                    android:layout_alignParentLeft="true"
-                    android:text="Address:"
-                    android:padding="3dp"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/addressTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/stateTextView"
-                    android:layout_toRightOf="@id/addressLabel"
-                    android:text="Address:"
                     android:padding="3dp"
                     android:textSize="18sp" />
 

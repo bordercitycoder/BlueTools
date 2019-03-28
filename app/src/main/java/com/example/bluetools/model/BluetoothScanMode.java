@@ -10,7 +10,7 @@ public class BluetoothScanMode {
 
         switch (mode) {
             case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
-                scanModeText = "Connectable but not discoverable";
+                scanModeText = "Connectable, not discoverable";
                 break;
             case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
                 scanModeText = "Connectable and discoverable";

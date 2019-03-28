@@ -51,7 +51,6 @@ public class DeviceBluetoothHeaderPresenter {
         if (!bluetoothModel.isBluetoothNull()) {
 
             String name = bluetoothModel.getLocalBluetoothName();
-            String address = bluetoothModel.getLocalAddress();
             String enabled = bluetoothModel.getLocalEnabled();
             String state = bluetoothModel.getLocalBluetoothState();
 
@@ -59,7 +58,6 @@ public class DeviceBluetoothHeaderPresenter {
             view.displayName(name);
             view.displayEnabled(enabled);
             view.displayState(state);
-            view.displayAddress(address);
 
 
             if (bluetoothModel.isBluetoothEnabled()) {
@@ -82,8 +80,6 @@ public class DeviceBluetoothHeaderPresenter {
         void displayEnabled(String enabled);
 
         void displayState(String state);
-
-        void displayAddress(String address);
 
         void updateEnableButton(String text);
 

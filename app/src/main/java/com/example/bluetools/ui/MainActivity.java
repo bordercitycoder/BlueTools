@@ -28,16 +28,14 @@ public class MainActivity extends AppCompatActivity implements
 
     private DeviceBluetoothDetailFragment deviceBluetoothDetailFragment;
     private Fragment activeFragment;
+    private Button enableButton;
 
     private ImageView disabledImageView;
     private ImageView enabledImageView;
 
     private TextView enabledTextView;
-    private TextView addressTextView;
     private TextView stateTextView;
     private TextView nameTextView;
-    private Button enableButton;
-
 
     private DeviceBluetoothHeaderPresenter presenter;
 
@@ -94,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements
         nameTextView = layout.findViewById(R.id.nameTextView);
         enabledTextView = layout.findViewById(R.id.enabledTextView);
         stateTextView = layout.findViewById(R.id.stateTextView);
-        addressTextView = layout.findViewById(R.id.addressTextView);
         enableButton = layout.findViewById(R.id.enableBluetoothButton);
         enabledImageView = layout.findViewById(R.id.enabledImageView);
         disabledImageView = layout.findViewById(R.id.disabledImageView);
@@ -135,11 +132,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void displayState(String state) {
         stateTextView.setText(state);
-    }
-
-    @Override
-    public void displayAddress(String address) {
-        addressTextView.setText(address);
     }
 
     @Override
