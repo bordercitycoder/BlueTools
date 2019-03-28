@@ -1,4 +1,4 @@
-package com.example.bluetools;
+package com.example.bluetools.model;
 
 import android.bluetooth.BluetoothAdapter;
 
@@ -8,6 +8,7 @@ public class BluetoothModel implements IBluetoothModel {
     private final BluetoothScanMode bluetoothScanMode;
 
     public BluetoothModel() {
+        // ToDo need to add injection
         bluetoothState = new BluetoothState();
         bluetoothScanMode = new BluetoothScanMode();
     }

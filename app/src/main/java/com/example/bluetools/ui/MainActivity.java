@@ -1,4 +1,4 @@
-package com.example.bluetools;
+package com.example.bluetools.ui;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
@@ -18,15 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.BlueTools.R;
-import com.example.bluetools.dummy.DummyContent;
+import com.example.bluetools.events.BluetoothStateChangeEvent;
+import com.example.bluetools.presenters.DeviceBluetoothHeaderPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class MainActivity extends AppCompatActivity implements RemoteDeviceListFragment.OnListFragmentInteractionListener,
-        DeviceBluetoothHeaderPresenter.IDeviceBluetoothPresenterView {
+public class MainActivity extends AppCompatActivity implements
+        DeviceBluetoothHeaderPresenter.IDeviceBluetoothHeaderView {
 
     private DeviceBluetoothDetailFragment deviceBluetoothDetailFragment;
-    private RemoteDeviceListFragment bluetoothItemFragment;
     private Fragment activeFragment;
 
     private ImageView disabledImageView;
@@ -60,12 +60,6 @@ public class MainActivity extends AppCompatActivity implements RemoteDeviceListF
                     return true;
 
                 case R.id.navigation_dashboard:
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .hide(activeFragment)
-                            .show(bluetoothItemFragment)
-                            .commit();
-                    activeFragment = bluetoothItemFragment;
                     return true;
 
                 case R.id.navigation_notifications:
@@ -86,36 +80,13 @@ public class MainActivity extends AppCompatActivity implements RemoteDeviceListF
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         deviceBluetoothDetailFragment = new DeviceBluetoothDetailFragment();
-        bluetoothItemFragment = new RemoteDeviceListFragment();
-
-        getSupportFragmentManager().beginTransaction().add(R.id.main_container, bluetoothItemFragment, "2").hide(bluetoothItemFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.main_container, deviceBluetoothDetailFragment, "1").commit();
         activeFragment = deviceBluetoothDetailFragment;
 
         findViews();
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED));
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE));
-        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_REQUEST_ENABLE));
 
         presenter = new DeviceBluetoothHeaderPresenter();
-
         presenter.setView(this);
-
-        enableButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onEnableBluetoothButtonClick();
-            }
-        });
     }
 
     private void findViews() {
@@ -131,10 +102,24 @@ public class MainActivity extends AppCompatActivity implements RemoteDeviceListF
         enabledImageView.setVisibility(View.INVISIBLE);
     }
 
-
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    protected void onStart() {
+        super.onStart();
 
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED));
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED));
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE));
+        registerReceiver(mReceiver, new IntentFilter(BluetoothAdapter.ACTION_REQUEST_ENABLE));
+
+        presenter.onStart();
+
+        enableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onEnableBluetoothButtonClick();
+            }
+        });
     }
 
     @Override
@@ -188,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements RemoteDeviceListF
                     (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED) ||
                             action.equals(BluetoothAdapter.ACTION_SCAN_MODE_CHANGED))) {
 
-                EventBus.getDefault().post(new BluetoothStateChange());
+                EventBus.getDefault().post(new BluetoothStateChangeEvent());
 
             }
         }

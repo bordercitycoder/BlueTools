@@ -1,4 +1,8 @@
-package com.example.bluetools;
+package com.example.bluetools.presenters;
+
+import com.example.bluetools.events.BluetoothStateChangeEvent;
+import com.example.bluetools.model.BluetoothModel;
+import com.example.bluetools.model.IBluetoothModel;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,7 +29,7 @@ public class DeviceBluetoothDetailPresenter {
     }
 
     @Subscribe
-    public void onBluetoothStateChange(BluetoothStateChange event) {
+    public void onBluetoothStateChange(BluetoothStateChangeEvent event) {
         updateView();
     }
 

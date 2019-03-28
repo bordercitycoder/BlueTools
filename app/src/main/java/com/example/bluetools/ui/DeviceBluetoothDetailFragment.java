@@ -1,4 +1,4 @@
-package com.example.bluetools;
+package com.example.bluetools.ui;
 
 
 import android.os.Bundle;
@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.BlueTools.R;
+import com.example.bluetools.presenters.DeviceBluetoothDetailPresenter;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DeviceBluetoothDetailFragment extends Fragment implements DeviceBluetoothDetailPresenter.IDeviceBluetoothDetailView {
 
 

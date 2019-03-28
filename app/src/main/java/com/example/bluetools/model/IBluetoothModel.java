@@ -1,4 +1,4 @@
-package com.example.bluetools;
+package com.example.bluetools.model;
 
 public interface IBluetoothModel {
 

@@ -1,41 +1,44 @@
-package com.example.bluetools;
+package com.example.bluetools.presenters;
 
-import org.greenrobot.eventbus.EventBus;
+
+import com.example.bluetools.events.BluetoothStateChangeEvent;
+import com.example.bluetools.events.DefaultEventBus;
+import com.example.bluetools.events.IDefaultEventBus;
+import com.example.bluetools.model.BluetoothModel;
+import com.example.bluetools.model.IBluetoothModel;
+
 import org.greenrobot.eventbus.Subscribe;
 
 public class DeviceBluetoothHeaderPresenter {
 
 
     private IBluetoothModel bluetoothModel;
-
-    private IDeviceBluetoothPresenterView view;
+    private IDefaultEventBus eventBus;
+    private IDeviceBluetoothHeaderView view;
 
 
     public DeviceBluetoothHeaderPresenter() {
-        bluetoothModel = new BluetoothModel();
+        this.bluetoothModel = new BluetoothModel();
+        this.eventBus = new DefaultEventBus();
     }
 
     @Subscribe
-    public void onBluetoothStateChange(BluetoothStateChange event) {
+    public void onBluetoothStateChange(BluetoothStateChangeEvent event) {
         updateView();
     }
 
+    public void onStart() {
+        eventBus.registerWithBus(this);
+        updateView();
+    }
 
     public void onStop() {
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
+        eventBus.unregisterWithBus(this);
     }
 
-    public void setView(IDeviceBluetoothPresenterView view) {
+    public void setView(IDeviceBluetoothHeaderView view){
         this.view = view;
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
-
-        updateView();
     }
-
 
     public void onEnableBluetoothButtonClick() {
         if (!bluetoothModel.isBluetoothNull()) {
@@ -68,15 +71,11 @@ public class DeviceBluetoothHeaderPresenter {
             }
 
 
-        } else {
-            //   textView.setText("BluetoothAdapter = null");
-
-
         }
     }
 
 
-    public interface IDeviceBluetoothPresenterView {
+    public interface IDeviceBluetoothHeaderView {
 
         void displayName(String name);
 
