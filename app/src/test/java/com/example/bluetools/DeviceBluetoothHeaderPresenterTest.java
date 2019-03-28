@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class DeviceBluetoothHeaderPresenterTest {
 
 
@@ -27,8 +27,7 @@ public class DeviceBluetoothHeaderPresenterTest {
     private static final String TRUE = "True";
     private static final String FALSE = "False";
     private static final String STATE = "STATE";
-    private static final String DISABLE = "Disable";
-    private static final String ENABLE = "Enable";
+
 
 
     @InjectMocks
@@ -71,7 +70,7 @@ public class DeviceBluetoothHeaderPresenterTest {
     public void should_setup_disable_button_when_blue_enabled_onBluetoothStateChange() {
         setupEnabledModel();
         presenter.onBluetoothStateChange(mockStateChangeEvent);
-        verify(mockView).updateEnableButton(DISABLE);
+        verify(mockView).displayDisableButton();
         verify(mockView).displayEnabledImage();
     }
 
@@ -79,7 +78,7 @@ public class DeviceBluetoothHeaderPresenterTest {
     public void should_setup_enable_button_when_blue_disabled_onBluetoothStateChange() {
         setupDisabledModel();
         presenter.onBluetoothStateChange(mockStateChangeEvent);
-        verify(mockView, times(1)).updateEnableButton(ENABLE);
+        verify(mockView, times(1)).displayEnableButton();
         verify(mockView, times(1)).displayDisabledImage();
     }
 
@@ -115,7 +114,6 @@ public class DeviceBluetoothHeaderPresenterTest {
         verify(mockView).displayName(NAME);
         verify(mockView).displayEnabled(TRUE);
         verify(mockView).displayState(STATE);
-        verify(mockView).displayAddress(ADDRESS);
     }
 
 

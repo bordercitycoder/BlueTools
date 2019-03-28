@@ -61,10 +61,10 @@ public class DeviceBluetoothHeaderPresenter {
 
 
             if (bluetoothModel.isBluetoothEnabled()) {
-                view.updateEnableButton("Disable");
+                view.displayDisableButton();
                 view.displayEnabledImage();
             } else {
-                view.updateEnableButton("Enable");
+                view.displayEnableButton();
                 view.displayDisabledImage();
             }
 
@@ -81,11 +81,13 @@ public class DeviceBluetoothHeaderPresenter {
 
         void displayState(String state);
 
-        void updateEnableButton(String text);
-
         void displayEnabledImage();
 
         void displayDisabledImage();
+
+        void displayEnableButton();
+
+        void displayDisableButton();
 
     }
 

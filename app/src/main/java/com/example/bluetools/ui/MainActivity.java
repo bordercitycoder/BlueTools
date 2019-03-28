@@ -135,16 +135,20 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void updateEnableButton(String text) {
-        enableButton.setText(text);
+    public void displayEnableButton(){
+        enableButton.setText(getString(R.string.button_enable_text));
     }
-
+    @Override
+    public void displayDisableButton(){
+        enableButton.setText(getString(R.string.button_disable_text));
+    }
+    @Override
     public void displayEnabledImage() {
         disabledImageView.setVisibility(View.INVISIBLE);
         enabledImageView.setVisibility(View.VISIBLE);
     }
 
-
+    @Override
     public void displayDisabledImage() {
         enabledImageView.setVisibility(View.INVISIBLE);
         disabledImageView.setVisibility(View.VISIBLE);
