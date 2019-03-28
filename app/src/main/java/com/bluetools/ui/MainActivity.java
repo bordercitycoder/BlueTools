@@ -1,4 +1,4 @@
-package com.example.bluetools.ui;
+package com.bluetools.ui;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
@@ -17,11 +17,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.BlueTools.R;
-import com.example.bluetools.events.BluetoothStateChangeEvent;
-import com.example.bluetools.presenters.DeviceBluetoothHeaderPresenter;
+import com.bluetools.BlueTools.R;
+import com.bluetools.events.BluetoothStateChangeEvent;
+import com.bluetools.inject.AppModule;
+import com.bluetools.inject.DaggerAppComponent;
+import com.bluetools.presenters.DeviceBluetoothHeaderPresenter;
+import com.bluetools.utils.ResourceUtil;
 
 import org.greenrobot.eventbus.EventBus;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements
         DeviceBluetoothHeaderPresenter.IDeviceBluetoothHeaderView {
@@ -37,7 +42,11 @@ public class MainActivity extends AppCompatActivity implements
     private TextView stateTextView;
     private TextView nameTextView;
 
-    private DeviceBluetoothHeaderPresenter presenter;
+    @Inject
+    ResourceUtil resourceUtil;
+
+    @Inject
+    DeviceBluetoothHeaderPresenter presenter;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -72,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        DaggerAppComponent.builder().appModule(new AppModule(getApplicationContext())).build()
+                .inject(this);
+
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -83,8 +97,10 @@ public class MainActivity extends AppCompatActivity implements
 
         findViews();
 
-        presenter = new DeviceBluetoothHeaderPresenter();
+
         presenter.setView(this);
+
+
     }
 
     private void findViews() {
@@ -135,13 +151,17 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void displayEnableButton(){
-        enableButton.setText(getString(R.string.button_enable_text));
+    public void displayEnableButton() {
+
+        String text = resourceUtil.getString(R.string.button_enable_text);
+        enableButton.setText(text);
     }
+
     @Override
-    public void displayDisableButton(){
+    public void displayDisableButton() {
         enableButton.setText(getString(R.string.button_disable_text));
     }
+
     @Override
     public void displayEnabledImage() {
         disabledImageView.setVisibility(View.INVISIBLE);

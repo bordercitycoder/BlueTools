@@ -1,4 +1,4 @@
-package com.example.bluetools.ui;
+package com.bluetools.ui;
 
 
 import android.os.Bundle;
@@ -8,15 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.BlueTools.R;
-import com.example.bluetools.presenters.DeviceBluetoothDetailPresenter;
+import com.bluetools.BlueTools.R;
+import com.bluetools.inject.AppModule;
+import com.bluetools.inject.DaggerAppComponent;
+import com.bluetools.presenters.DeviceBluetoothDetailPresenter;
+
+import javax.inject.Inject;
 
 public class DeviceBluetoothDetailFragment extends Fragment implements DeviceBluetoothDetailPresenter.IDeviceBluetoothDetailView {
 
 
     private TextView scanModeTextView;
     private TextView addressTextView;
-    private DeviceBluetoothDetailPresenter presenter;
+
+    @Inject
+    DeviceBluetoothDetailPresenter presenter;
 
 
     public DeviceBluetoothDetailFragment() {
@@ -26,8 +32,14 @@ public class DeviceBluetoothDetailFragment extends Fragment implements DeviceBlu
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+
+        DaggerAppComponent.builder().appModule(new AppModule(getContext())).build()
+                .inject(this);
+
         View view = inflater.inflate(R.layout.fragment_device_bluetooth_detail, container, false);
         findViews(view);
+
+        presenter.setView(this);
 
         return view;
     }
@@ -40,8 +52,7 @@ public class DeviceBluetoothDetailFragment extends Fragment implements DeviceBlu
     @Override
     public void onStart() {
         super.onStart();
-        presenter = new DeviceBluetoothDetailPresenter();
-        presenter.setView(this);
+        presenter.onStart();
     }
 
     @Override

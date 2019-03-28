@@ -1,4 +1,4 @@
-package com.example.bluetools.events;
+package com.bluetools.events;
 
 public class BluetoothStateChangeEvent {
 }

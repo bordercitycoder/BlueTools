@@ -1,16 +1,20 @@
-package com.example.bluetools.model;
+package com.bluetools.model;
 
 import android.bluetooth.BluetoothAdapter;
 
+import javax.inject.Inject;
+
 public class BluetoothModel implements IBluetoothModel {
 
-    private final BluetoothState bluetoothState;
-    private final BluetoothScanMode bluetoothScanMode;
 
-    public BluetoothModel() {
-        // ToDo need to add injection
-        bluetoothState = new BluetoothState();
-        bluetoothScanMode = new BluetoothScanMode();
+    BluetoothState bluetoothState;
+
+    BluetoothScanMode bluetoothScanMode;
+
+    @Inject
+    public BluetoothModel(BluetoothState bluetoothState, BluetoothScanMode bluetoothScanMode) {
+        this.bluetoothState = bluetoothState;
+        this.bluetoothScanMode = bluetoothScanMode;
     }
 
     public String getLocalBluetoothName() {

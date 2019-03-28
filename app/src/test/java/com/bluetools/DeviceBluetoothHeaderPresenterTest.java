@@ -1,15 +1,16 @@
-package com.example.bluetools;
+package com.bluetools;
 
-import com.example.bluetools.events.BluetoothStateChangeEvent;
-import com.example.bluetools.events.DefaultEventBus;
-import com.example.bluetools.model.IBluetoothModel;
-import com.example.bluetools.presenters.DeviceBluetoothHeaderPresenter;
+import com.bluetools.events.BluetoothStateChangeEvent;
+import com.bluetools.events.DefaultEventBus;
+import com.bluetools.model.IBluetoothModel;
+import com.bluetools.presenters.DeviceBluetoothHeaderPresenter;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.never;
@@ -29,7 +30,6 @@ public class DeviceBluetoothHeaderPresenterTest {
     private static final String STATE = "STATE";
 
 
-
     @InjectMocks
     DeviceBluetoothHeaderPresenter presenter;
 
@@ -47,7 +47,9 @@ public class DeviceBluetoothHeaderPresenterTest {
 
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
+
+        MockitoAnnotations.initMocks(this);
         when(mockModel.isBluetoothNull()).thenReturn(true);
         when(mockModel.isBluetoothEnabled()).thenReturn(false);
     }

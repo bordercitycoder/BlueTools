@@ -8,4 +8,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_enable_text">Enable</string>
     <string name="button_disable_text">Disable</string>
+    <string name="bluetooth_state_off">Bluetooth off</string>
+    <string name="bluetooth_state_unknown">Unknown Bluetooth state</string>
+    <string name="bluetooth_state_turn_off">Turning Bluetooth off...</string>
+    <string name="bluetooth_state_on">Bluetooth on</string>
+    <string name="bluetooth_state_turn_on">Turning Bluetooth on...</string>
+    <string name="bluetooth_state_error">Error finding Bluetooth state...</string>
+    <string name="bluetooth_scan_unknown">Unknown</string>
+    <string name="bluetooth_scan_connect_no_discover">Connectable, not discoverable</string>
+    <string name="bluetooth_scan_connect_and_discover">Connectable and discoverable</string>
+    <string name="bluetooth_scan_error">Error finding Bluetooth scan mode...</string>
+    <string name="label_state">State:</string>
+    <string name="label_Enabled">Enabled:</string>
+    <string name="label_Name">Name:</string>
+    <string name="label_Scan_Mode">Scan Mode:</string>
+    <string name="None">None</string>
+    <string name="label_Address">Address:</string>
 </resources>

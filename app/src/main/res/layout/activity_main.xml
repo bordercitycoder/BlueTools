@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -22,19 +21,18 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                tools:context="com.example.bluetools.ui.DeviceBluetoothDetailFragment">
+                tools:context="com.bluetools.ui.DeviceBluetoothDetailFragment">
 
                 <TextView
                     android:id="@+id/nameLabel"
@@ -42,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Name:"
+                    android:text="@string/label_Name"
                     android:padding="3dp"
                     android:layout_marginTop="10dp"
                     android:textSize="18sp" />
@@ -53,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/nameLabel"
                     android:layout_alignParentTop="true"
-                    android:text="Name:"
+                    android:text="@string/label_Name"
                     android:layout_marginTop="10dp"
                     android:padding="3dp"
                     android:textSize="18sp" />
@@ -63,8 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nameLabel"
-                    android:layout_alignParentLeft="true"
-                    android:text="Enabled:"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/label_Enabled"
                     android:padding="3dp"
                     android:textSize="18sp" />
 
@@ -75,7 +73,7 @@
                     android:layout_below="@id/nameTextView"
                     android:layout_toRightOf="@id/enabledLabel"
                     android:padding="3dp"
-                    android:text="Enabled:"
+                    android:text="@string/label_Enabled"
                     android:textSize="18sp" />
 
 
@@ -84,9 +82,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/enabledLabel"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:padding="3dp"
-                    android:text="State:"
+                    android:text="@string/label_state"
                     android:textSize="18sp" />
 
                 <TextView
@@ -94,8 +92,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/enabledTextView"
-                    android:layout_toRightOf="@id/stateLabel"
-                    android:text="State:"
+                    android:layout_toEndOf="@id/stateLabel"
+                    android:text="@string/label_state"
                     android:padding="3dp"
                     android:textSize="18sp" />
 
@@ -103,7 +101,8 @@
                     android:id="@+id/enabledImageView"
                     android:layout_width="77dp"
                     android:layout_height="72dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
                     android:src="@drawable/enabled"
                     android:tint="#A6CEEE"
                     tools:visibility="invisible" />
@@ -112,7 +111,8 @@
                     android:id="@+id/disabledImageView"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
                     android:tint="@color/colorAccent"
                     android:src="@drawable/bluetooth_disabled_black_704x704"
                     tools:visibility="invisible" />
@@ -124,7 +124,7 @@
                     android:layout_below="@id/stateTextView"
                     android:layout_alignParentRight="true"
 
-                    android:text="Button" />
+                    android:text="" />
 
 
             </RelativeLayout>
@@ -144,15 +144,15 @@
         android:layout_below="@id/app_bar" />
 
 
-<android.support.design.widget.BottomNavigationView
-android:id="@+id/nav_view"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_alignParentBottom="true"
-android:layout_marginStart="0dp"
-android:layout_marginEnd="0dp"
-android:background="#A6CEEE"
-app:menu="@menu/bottom_nav_menu" />
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#A6CEEE"
+        app:menu="@menu/bottom_nav_menu" />
 
 
-    </RelativeLayout>
+</RelativeLayout>

@@ -1,13 +1,15 @@
-package com.example.bluetools.presenters;
+package com.bluetools.presenters;
 
 
-import com.example.bluetools.events.BluetoothStateChangeEvent;
-import com.example.bluetools.events.DefaultEventBus;
-import com.example.bluetools.events.IDefaultEventBus;
-import com.example.bluetools.model.BluetoothModel;
-import com.example.bluetools.model.IBluetoothModel;
+import com.bluetools.events.BluetoothStateChangeEvent;
+import com.bluetools.events.DefaultEventBus;
+import com.bluetools.events.IDefaultEventBus;
+import com.bluetools.model.BluetoothModel;
+import com.bluetools.model.IBluetoothModel;
 
 import org.greenrobot.eventbus.Subscribe;
+
+import javax.inject.Inject;
 
 public class DeviceBluetoothHeaderPresenter {
 
@@ -17,9 +19,10 @@ public class DeviceBluetoothHeaderPresenter {
     private IDeviceBluetoothHeaderView view;
 
 
-    public DeviceBluetoothHeaderPresenter() {
-        this.bluetoothModel = new BluetoothModel();
-        this.eventBus = new DefaultEventBus();
+    @Inject
+    public DeviceBluetoothHeaderPresenter(BluetoothModel bluetoothModel, DefaultEventBus eventBus) {
+        this.bluetoothModel = bluetoothModel;
+        this.eventBus = eventBus;
     }
 
     @Subscribe
@@ -36,7 +39,7 @@ public class DeviceBluetoothHeaderPresenter {
         eventBus.unregisterWithBus(this);
     }
 
-    public void setView(IDeviceBluetoothHeaderView view){
+    public void setView(IDeviceBluetoothHeaderView view) {
         this.view = view;
     }
 

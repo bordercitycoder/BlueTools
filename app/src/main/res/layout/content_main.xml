@@ -8,7 +8,7 @@
     android:layout_margin="3dp"
     android:padding="1dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.bluetools.ui.MainActivity"
+    tools:context="com.bluetools.ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
 </FrameLayout>

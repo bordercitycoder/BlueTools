@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    tools:context="com.example.bluetools.ui.DeviceBluetoothDetailFragment">
+    tools:context="com.bluetools.ui.DeviceBluetoothDetailFragment">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Scan Mode:"
+        android:text="@string/label_Scan_Mode"
         android:layout_marginTop="10dp"
         android:padding="3dp"
         android:textSize="18sp" />
@@ -25,7 +25,7 @@
         android:layout_toEndOf="@id/scanModeLabel"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:text="None"
+        android:text="@string/None"
         android:padding="3dp"
         android:textSize="18sp" />
 
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/scanModeLabel"
         android:layout_alignParentStart="true"
-        android:text="Address:"
+        android:text="@string/label_Address"
         android:layout_marginTop="20dp"
         android:padding="3dp"
         android:textSize="18sp" />
@@ -47,11 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/scanModeTextView"
         android:layout_toEndOf="@id/addressLabel"
-        android:text="Address:"
+        android:text=""
         android:layout_marginTop="20dp"
         android:padding="3dp"
         android:textSize="18sp" />
-
 
 
 </RelativeLayout>

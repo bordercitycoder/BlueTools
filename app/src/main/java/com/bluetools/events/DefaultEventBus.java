@@ -1,10 +1,14 @@
-package com.example.bluetools.events;
+package com.bluetools.events;
 
 import org.greenrobot.eventbus.EventBus;
 
+import javax.inject.Inject;
+
 public class DefaultEventBus implements IDefaultEventBus {
 
-
+    @Inject
+    public DefaultEventBus() {
+    }
 
     public void registerWithBus(Object object) {
 
@@ -22,8 +26,6 @@ public class DefaultEventBus implements IDefaultEventBus {
         }
 
     }
-
-
 
 
 }

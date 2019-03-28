@@ -1,30 +1,34 @@
-package com.example.bluetools.presenters;
+package com.bluetools.presenters;
 
-import com.example.bluetools.events.BluetoothStateChangeEvent;
-import com.example.bluetools.model.BluetoothModel;
-import com.example.bluetools.model.IBluetoothModel;
+import com.bluetools.events.BluetoothStateChangeEvent;
+import com.bluetools.events.DefaultEventBus;
+import com.bluetools.events.IDefaultEventBus;
+import com.bluetools.model.IBluetoothModel;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+
+import javax.inject.Inject;
 
 
 public class DeviceBluetoothDetailPresenter {
 
-    private final IBluetoothModel bluetoothModel;
+    private IBluetoothModel bluetoothModel;
     private IDeviceBluetoothDetailView view;
+    private IDefaultEventBus eventBus;
 
 
-    public DeviceBluetoothDetailPresenter() {
-        bluetoothModel = new BluetoothModel();
+    @Inject
+    public DeviceBluetoothDetailPresenter(IBluetoothModel bluetoothModel, DefaultEventBus eventBus) {
+        this.eventBus = eventBus;
+        this.bluetoothModel = bluetoothModel;
     }
 
     public void setView(IDeviceBluetoothDetailView view) {
         this.view = view;
+    }
 
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
-
+    public void onStart() {
+        eventBus.registerWithBus(this);
         updateView();
     }
 
@@ -45,9 +49,7 @@ public class DeviceBluetoothDetailPresenter {
     }
 
     public void onDestroy() {
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this);
-        }
+        eventBus.unregisterWithBus(this);
     }
 
     public interface IDeviceBluetoothDetailView {
